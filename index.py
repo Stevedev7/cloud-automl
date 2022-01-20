@@ -3,6 +3,7 @@ from google.cloud import automl_v1beta1 as automl
 project_id = 'niveustraining'
 path = 'gs://test-dataset-automl-bucket/predictive-maintenance/data.csv'
 display_name = 'machine_failure'
+target_column_name = 'Failure_Type'
 
 client = automl.TablesClient(project=project_id, region='us-central1')
 
@@ -69,7 +70,7 @@ import_data(client, dataset_display_name, path)
 
 
 print('setting target column')
-set_target_column(client, dataset_display_name, 'Failure_Type')
+set_target_column(client, dataset_display_name, target_column_name)
 
 model_display_name = generate_display_name(display_name)
 
